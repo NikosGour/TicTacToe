@@ -15,16 +15,62 @@ public class Board {
                 board[i][j] = new BlankNode();
             }
         }
+
+        this.gameLoop();
     }
     public void printBoard()
     {
-        System.out.printf(" %c | %c | %c \n" +
-                          "-----------\n" +
-                          " %c | %c | %c \n" +
-                          "-----------\n" +
-                          " %c | %c | %c \n",
+        System.out.printf(" %c | %c | %c " + "\n" +
+                          "-----------"    + "\n" +
+                          " %c | %c | %c " + "\n" +
+                          "-----------"    + "\n" +
+                          " %c | %c | %c " + "\n" ,
                         board[0][0].value(),board[0][1].value(),board[0][2].value(),
                         board[1][0].value(),board[1][1].value(),board[1][2].value(),
                         board[2][0].value(),board[2][1].value(),board[2][2].value());
+    }
+
+    private void playerPlay(Node player)
+    {
+        System.out.printf("Player %c's turn%n" , player.value());
+
+        System.out.print("Give row : ");
+        int i = Utils.scan.nextInt();
+        Utils.scan.nextLine();
+
+        System.out.print("Give Collumn : ");
+        int j = Utils.scan.nextInt();
+        Utils.scan.nextLine();
+
+        board[i][j] = player;
+    }
+
+    private boolean isGameOver()
+    {
+        if (( board[0][0].getClass().equals( board[0][1].getClass()) && board[0][1].getClass().equals( board[0][2].getClass())) && !(board[0][0] instanceof BlankNode) ) return true;
+        if (( board[1][0].getClass().equals( board[1][1].getClass()) && board[1][1].getClass().equals( board[1][2].getClass())) && !(board[1][1] instanceof BlankNode) ) return true;
+        if (( board[2][0].getClass().equals( board[2][1].getClass()) && board[2][1].getClass().equals( board[2][2].getClass())) && !(board[2][2] instanceof BlankNode) ) return true;
+        if (( board[0][0].getClass().equals( board[1][0].getClass()) && board[1][0].getClass().equals( board[2][0].getClass())) && !(board[0][0] instanceof BlankNode) ) return true;
+        if (( board[0][1].getClass().equals( board[1][1].getClass()) && board[1][1].getClass().equals( board[2][1].getClass())) && !(board[1][1] instanceof BlankNode) ) return true;
+        if (( board[0][2].getClass().equals( board[1][2].getClass()) && board[1][2].getClass().equals( board[2][2].getClass())) && !(board[2][2] instanceof BlankNode) ) return true;
+        if (( board[0][0].getClass().equals( board[1][1].getClass()) && board[1][1].getClass().equals( board[2][2].getClass())) && !(board[0][0] instanceof BlankNode) ) return true;
+        if (( board[0][2].getClass().equals( board[1][1].getClass()) && board[1][1].getClass().equals( board[2][0].getClass())) && !(board[0][2] instanceof BlankNode) ) return true;
+        return false;
+    }
+
+    public void gameLoop()
+    {
+        this.printBoard();
+        int player = 0;
+        Node[] allPlayers = {new XNode(),new ONode()};
+
+        while (true)
+        {
+            playerPlay(allPlayers[player]);
+            if (isGameOver()) break;
+            player = 1 - player;
+            printBoard();
+        }
+        System.out.println("Player Won");
     }
 }
