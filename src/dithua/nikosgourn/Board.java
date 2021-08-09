@@ -32,6 +32,7 @@ public class Board {
 
     private void playerPlay(Node player)
     {
+
         System.out.printf("Player %c's turn%n" , player.value());
         do {
             System.out.print("Give row : ");

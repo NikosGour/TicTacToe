@@ -1,6 +1,7 @@
 package dithua.nikosgourn;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.*;
 
@@ -27,8 +28,7 @@ public class Main {
         panels[7] = createPanel(window, 3, 3, 0, 3, 200, 300);
         panels[8] = createPanel(window, 3, 3, 0, 0, 300, 300);
 
-        JButton but = new JButton();
-        but.setBackground(Color.white);
+
         panels[0].setLayout(new BorderLayout());
         panels[0].add(but);
     }
