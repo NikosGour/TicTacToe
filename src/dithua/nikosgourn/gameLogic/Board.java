@@ -1,4 +1,10 @@
-package dithua.nikosgourn;
+package dithua.nikosgourn.gameLogic;
+
+import dithua.nikosgourn.GUI.Button;
+import dithua.nikosgourn.Nodes.BlankNode;
+import dithua.nikosgourn.Nodes.Node;
+import dithua.nikosgourn.Nodes.ONode;
+import dithua.nikosgourn.Nodes.XNode;
 
 public class Board {
 
@@ -9,7 +15,7 @@ public class Board {
     //                  Update Board
     //                  Update Scoreboard
     //                  Que players to players
-    Board()
+    public Board()
     {
         for (int i = 0; i < 9; i++) {
             board[i] = new BlankNode();

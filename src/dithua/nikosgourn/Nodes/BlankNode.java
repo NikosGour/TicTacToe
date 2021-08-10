@@ -1,4 +1,4 @@
-package dithua.nikosgourn;
+package dithua.nikosgourn.Nodes;
 
 
 public class BlankNode extends Node {

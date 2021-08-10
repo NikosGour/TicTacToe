@@ -1,4 +1,4 @@
-package dithua.nikosgourn;
+package dithua.nikosgourn.gameLogic;
 
 public class Scoreboard {
     private static int XWins = 0;

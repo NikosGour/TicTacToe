@@ -1,47 +1,39 @@
 package dithua.nikosgourn;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.MatteBorder;
+import dithua.nikosgourn.GUI.Button;
+import dithua.nikosgourn.GUI.NPanel;
+import dithua.nikosgourn.GUI.Window;
+import dithua.nikosgourn.gameLogic.Board;
+
 import java.awt.*;
 
 public class Main {
 
     public static void main(String[] args) {
         var board = new Board();
+        Window window = new Window();
 
-        JFrame window = new JFrame();
-        window.setResizable(false);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setSize(500,500);
-        window.setLayout(null);
 
-        JPanel[] panels = new JPanel[9];
-        panels[0] = createPanel(window, 0, 0, 3, 3, 100, 100);
-        panels[1] = createPanel(window, 0, 3, 3, 3, 200, 100);
-        panels[2] = createPanel(window, 0, 3, 3, 0, 300, 100);
-        panels[3] = createPanel(window, 3, 0, 3, 3, 100, 200);
-        panels[4] = createPanel(window, 3, 3, 3, 3, 200, 200);
-        panels[5] = createPanel(window, 3, 3, 3, 0, 300, 200);
-        panels[6] = createPanel(window, 3, 0, 0, 3, 100, 300);
-        panels[7] = createPanel(window, 3, 3, 0, 3, 200, 300);
-        panels[8] = createPanel(window, 3, 3, 0, 0, 300, 300);
+        NPanel[] panels = new NPanel[9];
+        panels[0] = new NPanel(window, 0, 0, 3, 3, 100, 100);
+        panels[1] = new NPanel(window, 0, 3, 3, 3, 200, 100);
+        panels[2] = new NPanel(window, 0, 3, 3, 0, 300, 100);
+        panels[3] = new NPanel(window, 3, 0, 3, 3, 100, 200);
+        panels[4] = new NPanel(window, 3, 3, 3, 3, 200, 200);
+        panels[5] = new NPanel(window, 3, 3, 3, 0, 300, 200);
+        panels[6] = new NPanel(window, 3, 0, 0, 3, 100, 300);
+        panels[7] = new NPanel(window, 3, 3, 0, 3, 200, 300);
+        panels[8] = new NPanel(window, 3, 3, 0, 0, 300, 300);
 
 
         for (int i = 0; i < 9 ; i++) {
 
             panels[i].setLayout(new BorderLayout());
-            Button button = new Button(board , i);
+            dithua.nikosgourn.GUI.Button button = new Button(board , i);
             panels[i].add(button);
         }
         window.setVisible(true);
     }
 
-    private static JPanel createPanel(JFrame window, int top, int left, int bottom, int right, int xOffset, int yOffset) {
-        JPanel panel = new JPanel();
-        panel.setBorder(new MatteBorder(top, left, bottom, right, Color.BLACK));
-        panel.setBounds(xOffset, yOffset, 100, 100);
-        window.add(panel);
-        return panel;
-    }
+
 }

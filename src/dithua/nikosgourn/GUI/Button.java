@@ -1,4 +1,6 @@
-package dithua.nikosgourn;
+package dithua.nikosgourn.GUI;
+
+import dithua.nikosgourn.gameLogic.Board;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +10,7 @@ public class Button extends JButton {
     public int i;
     private Board board;
 
-    Button(Board board , int i){
+    public Button(Board board, int i){
         this.board = board;
         buttons[i] = this;
         this.i = i;
