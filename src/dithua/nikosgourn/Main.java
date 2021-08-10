@@ -10,11 +10,15 @@ import java.awt.*;
 public class Main {
 
     public static void main(String[] args) {
+        //Create board and window
         var board = new Board();
         Window window = new Window();
 
 
+        //Array of all the panels used to store the buttons for the game
         NPanel[] panels = new NPanel[9];
+
+        //Create all the panels
         panels[0] = new NPanel(window, 0, 0, 3, 3, 100, 100);
         panels[1] = new NPanel(window, 0, 3, 3, 3, 200, 100);
         panels[2] = new NPanel(window, 0, 3, 3, 0, 300, 100);
@@ -25,13 +29,15 @@ public class Main {
         panels[7] = new NPanel(window, 3, 3, 0, 3, 200, 300);
         panels[8] = new NPanel(window, 3, 3, 0, 0, 300, 300);
 
-
+        //Create every button and bind it to the correct panel
         for (int i = 0; i < 9 ; i++) {
 
             panels[i].setLayout(new BorderLayout());
-            dithua.nikosgourn.GUI.Button button = new Button(board , i);
+            Button button = new Button(board , i);
             panels[i].add(button);
         }
+
+        //Show window !IMPORTANT! ALWAYS LAST PART OF CODE
         window.setVisible(true);
     }
 
