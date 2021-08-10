@@ -6,15 +6,14 @@ import dithua.nikosgourn.Nodes.Node;
 import dithua.nikosgourn.Nodes.ONode;
 import dithua.nikosgourn.Nodes.XNode;
 
+import javax.swing.*;
+
 public class Board {
 
     private Node[] board = new Node[9];
     private boolean tie;
     private static int playerTurn = 0;
-    //TODO: Implement : Check win condition
-    //                  Update Board
-    //                  Update Scoreboard
-    //                  Que players to players
+
     public Board()
     {
         for (int i = 0; i < 9; i++) {
@@ -22,26 +21,22 @@ public class Board {
         }
         this.tie = false;
     }
-    public void printBoard()
-    {
-        System.out.printf(" %c | %c | %c " + "\n" +
-                          "-----------"    + "\n" +
-                          " %c | %c | %c " + "\n" +
-                          "-----------"    + "\n" +
-                          " %c | %c | %c " + "\n" ,
-                        board[0].value(),board[1].value(),board[2].value(),
-                        board[3].value(),board[4].value(),board[5].value(),
-                        board[6].value(),board[7].value(),board[8].value());
-    }
 
-    public char playerPlay(Button button)
+    public ImageIcon playerPlay(Button button)
     {
         Node c = new ONode();
         if (playerTurn == 0){c = new XNode();}
 
         board[button.i] = c;
+        button.setEnabled(false);
         playerTurn = 1 - playerTurn;
-        return c.value();
+
+        ImageIcon rv = new ImageIcon("src/dithua/nikosgourn/assets/O.png");
+        if (c instanceof XNode){
+            rv = new ImageIcon("src/dithua/nikosgourn/assets/X.png");
+        }
+
+        return rv;
     }
 
     public boolean isGameOver()
