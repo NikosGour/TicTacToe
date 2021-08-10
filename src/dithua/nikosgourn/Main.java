@@ -8,11 +8,10 @@ import java.awt.*;
 public class Main {
 
     public static void main(String[] args) {
-//        var board = new Board();
+        var board = new Board();
 
         JFrame window = new JFrame();
         window.setResizable(false);
-        window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setSize(500,500);
         window.setLayout(null);
@@ -29,8 +28,13 @@ public class Main {
         panels[8] = createPanel(window, 3, 3, 0, 0, 300, 300);
 
 
-        panels[0].setLayout(new BorderLayout());
-        panels[0].add(but);
+        for (int i = 0; i < 9 ; i++) {
+
+            panels[i].setLayout(new BorderLayout());
+            Button button = new Button(board , i);
+            panels[i].add(button);
+        }
+        window.setVisible(true);
     }
 
     private static JPanel createPanel(JFrame window, int top, int left, int bottom, int right, int xOffset, int yOffset) {

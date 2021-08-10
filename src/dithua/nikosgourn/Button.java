@@ -4,20 +4,26 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Button extends JButton {
-    public static Button[][] buttons = new Button[3][3];
+    public static Button[] buttons = new Button[9];
     public int i;
-    public int j;
+    private Board board;
 
-    Board board;
-    Button(Board board , int i , int j){
+    Button(Board board , int i){
         this.board = board;
-        buttons[i][j] = this;
+        buttons[i] = this;
         this.i = i;
-        this.j = j;
         this.setBackground(Color.white);
         this.setBorder(BorderFactory.createEmptyBorder());
         this.addActionListener(e ->
         {
+
+            this.setText(Character.toString(this.board.playerPlay(this)));
+            if (this.board.isGameOver())
+            {
+                for (Button button : buttons) {
+                    button.setEnabled(false);
+                }
+            }
 
         });
     }
